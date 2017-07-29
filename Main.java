@@ -31,6 +31,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         long startTime = System.currentTimeMillis();
 
+
         Properties props = new Properties();
         ArrayList<String> readexcel=new <String>ArrayList();
         ArrayList <String[]> finaldates=new <String[]>ArrayList();
@@ -138,7 +139,7 @@ public class Main {
             System.out.println("--");
 
         }else{
-            //this runs if there is nothing in timeperiod_nst
+            //this runs if there is nothing in  timeperiod_nst
             System.out.println("no temporal extent!");
             String abstracttxt=(String)src.get("title")+"  "+ src.get("apiso_Abstract_txt");
             System.out.println(abstracttxt);
