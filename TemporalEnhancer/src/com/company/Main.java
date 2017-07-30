@@ -30,8 +30,7 @@ public class Main {
     static ArrayList<String> cate=new<String>ArrayList();
     public static void main(String[] args) throws Exception {
         long startTime = System.currentTimeMillis();
-
-
+        System.out.println(System.getProperty("user.dir"));
         Properties props = new Properties();
         ArrayList<String> readexcel=new <String>ArrayList();
         ArrayList <String[]> finaldates=new <String[]>ArrayList();
@@ -72,7 +71,7 @@ public class Main {
         return !date.substring(0, 4).contains("X");
     }
     private static ArrayList<String> readexcel(int col) throws IOException {
-        String strFile = "C:\\Users\\kartik\\Downloads\\ids.xlsx"; //IDS THAT YOU WANT TO ANALYZE IN .xlsx format
+        String strFile=System.getProperty("user.dir")+"\\ids.xlsx"; //IDS THAT YOU WANT TO ANALYZE IN .xlsx format
         InputStream inp = new FileInputStream(strFile);
         XSSFWorkbook wb = new XSSFWorkbook(inp);
         ArrayList<String> excelids=new ArrayList<String>();
@@ -93,7 +92,7 @@ public class Main {
 
     }
     private static void writecsv(String towrite,int col,int rowp) throws IOException, InvalidFormatException {
-        String strFile="C:\\Users\\kartik\\Downloads\\ids.xlsx";
+        String strFile=System.getProperty("user.dir")+"\\ids.xlsx";
         InputStream inp=new FileInputStream(strFile);
         XSSFWorkbook wb=new XSSFWorkbook(inp);
 
