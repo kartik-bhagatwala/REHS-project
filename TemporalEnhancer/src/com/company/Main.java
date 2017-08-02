@@ -27,7 +27,7 @@ import java.util.*;
 
 public class Main {
 
-    static ArrayList<String> cate=new<String>ArrayList();
+
     public static void main(String[] args) throws Exception {
         long startTime = System.currentTimeMillis();
         System.out.println(System.getProperty("user.dir"));
@@ -47,12 +47,13 @@ public class Main {
             for(int x=0;x<finaldates.get(p).length;x++){
                 if(x==0){
                     //System.out.println("date "+p+" timeperiod_begin "+finaldates.get(p)[x]);
-                    writecsv(finaldates.get(p)[x],2,p+2);//use plus 2 because first row is the descriptors
-                    writecsv(cate.get(p),5,p+2);
+                    writeexcel(finaldates.get(p)[x],2,p+2);//use plus 2 because first row is the descriptors
+                    writeexcel(categories.get(p),5,p+2);
+                    writeexcel(Integer.toString(timerefs.get(p)),6,p+2);
                 }
                 if(x==1){
                     //System.out.println("date "+p+" timeperiod_end "+finaldates.get(p)[x]);
-                    writecsv(finaldates.get(p)[x],3,p+2);
+                    writeexcel(finaldates.get(p)[x],3,p+2);
                 }
             }
         }
@@ -61,6 +62,8 @@ public class Main {
 
 
     }
+    private static ArrayList<String> categories=new<String>ArrayList();
+    private static ArrayList<Integer> timerefs=new ArrayList<Integer>();
     private static Boolean hasday(String date){
         return date.length() > 7;
     }
@@ -91,7 +94,7 @@ public class Main {
         return excelids;
 
     }
-    private static void writecsv(String towrite,int col,int rowp) throws IOException, InvalidFormatException {
+    private static void writeexcel(String towrite, int col, int rowp) throws IOException, InvalidFormatException {
         String strFile=System.getProperty("user.dir")+"\\ids.xlsx";
         InputStream inp=new FileInputStream(strFile);
         XSSFWorkbook wb=new XSSFWorkbook(inp);
@@ -120,6 +123,7 @@ public class Main {
         System.out.println("the id is:"+id);
         String jsontxt=readUrl("http://132.249.238.169:8080/geoportal/rest/metadata/item/"+id+"?pretty=true");
         String []arr=new String[2];
+
         ArrayList getdates;
         Object obj= JSONValue.parse(jsontxt);
         JSONObject jsonObject=(JSONObject) obj;
@@ -185,7 +189,7 @@ public class Main {
 
         Boolean wordafterdate=false;
         Boolean lookingformonth=true;
-
+        int timeref=0;
         Boolean saveword=false;
         String rangedate="";
         String monthsave="";
@@ -270,7 +274,7 @@ public class Main {
                     " to " + tokens.get(tokens.size() - 1).get(CoreAnnotations.CharacterOffsetEndAnnotation.class) + ']' +
                     " --> " + cm.get(TimeExpression.Annotation.class).getTemporal());
 
-
+            timeref++;
             SUTime.Temporal tim=cm.get(TimeExpression.Annotation.class).getTemporal();
             String time=tim.toISOString();
             System.out.println("we get this string:"+time);
@@ -480,7 +484,7 @@ public class Main {
             System.out.println("dateranks1:"+((String[])datesplusranks.get(1))[1]);
 
         }
-        cate.add(category);
+        timerefs.add(timeref);
         return datesplusranks;
     }
     private static String replace(String txt){
@@ -509,7 +513,7 @@ public class Main {
             cat="event";
         }else if(txt.equalsIgnoreCase("survey") ||txt.equalsIgnoreCase("study") ||txt.equalsIgnoreCase("expedition")||txt.equalsIgnoreCase("research")||txt.equalsIgnoreCase("results")||txt.equalsIgnoreCase("summary")||txt.equalsIgnoreCase("investigations") ){
             cat="range";
-        }else if(txt.equalsIgnoreCase("surveys")||txt.equalsIgnoreCase("conclusion")){
+        }else if(txt.equalsIgnoreCase("surveys")||txt.equalsIgnoreCase("conclusion") ||txt.equalsIgnoreCase("report")){
             cat="range";
         } else {
             cat=null;
