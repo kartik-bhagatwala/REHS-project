@@ -48,8 +48,8 @@ public class Main {
                 if(x==0){
                     //System.out.println("date "+p+" timeperiod_begin "+finaldates.get(p)[x]);
                     writeexcel(finaldates.get(p)[x],2,p+2);//use plus 2 because first row is the descriptors
-                    writeexcel(categories.get(p),5,p+2);
-                    writeexcel(Integer.toString(timerefs.get(p)),6,p+2);
+                    writeexcel(categories.get(p),6,p+2);
+                    writeexcel(Integer.toString(timerefs.get(p)),7,p+2);
                 }
                 if(x==1){
                     //System.out.println("date "+p+" timeperiod_end "+finaldates.get(p)[x]);
@@ -484,6 +484,7 @@ public class Main {
             System.out.println("dateranks1:"+((String[])datesplusranks.get(1))[1]);
 
         }
+        categories.add(category);
         timerefs.add(timeref);
         return datesplusranks;
     }
