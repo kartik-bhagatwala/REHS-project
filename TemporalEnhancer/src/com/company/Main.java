@@ -371,7 +371,7 @@ public class Main {
                 LocalDate date = LocalDate.parse(dateString);
                 LocalDate newDate=null;
                 if(date.getMonth().toString().equals("FEBRUARY")){//if month is february, dont use leap year days becuase it causes problems
-                    System.out.println("no leap year lolll");
+                    System.out.println("no leap year");
                     newDate = date.withDayOfMonth(date.getMonth().maxLength()-1);
 
                 }else {
@@ -510,7 +510,7 @@ public class Main {
     //TODO figure out how to classify words.
     private static String classify(String txt){
         String cat="";
-        if(txt.equals("eruption") || txt.equals("earthquake")){
+        if(txt.equals("eruption") || txt.equals("earthquake") || txt.equals("hurricane")||txt.equals("storm")||txt.equals("eruption")){
             cat="event";
         }else if(txt.equalsIgnoreCase("survey") ||txt.equalsIgnoreCase("study") ||txt.equalsIgnoreCase("expedition")||txt.equalsIgnoreCase("research")||txt.equalsIgnoreCase("results")||txt.equalsIgnoreCase("summary")||txt.equalsIgnoreCase("investigations") ){
             cat="range";
