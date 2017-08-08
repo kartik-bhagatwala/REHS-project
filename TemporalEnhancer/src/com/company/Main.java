@@ -34,15 +34,15 @@ public class Main {
         Properties props = new Properties();
         ArrayList<String> readexcel=new <String>ArrayList();
         ArrayList <String[]> finaldates=new <String[]>ArrayList();
-        readexcel=readexcel(0); //supply column for the function to read the id values in
+        readexcel=readexcel(0); //forms an arraylist of the first column of the excel spreadsheet
 
-        props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse,");
+        props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse,");//setting properties for the annotator
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
         pipeline.addAnnotator(new TimeAnnotator("sutime",props));
         for(int i=1;i<readexcel.size();i++){
             finaldates.add(findbyid(readexcel.get(i),pipeline));
         }
-        //prints the final values that we get
+        //writes the final values that we get to excel
         for(int p=0;p<finaldates.size();p++){
             for(int x=0;x<finaldates.get(p).length;x++){
                 if(x==0){
@@ -100,7 +100,7 @@ public class Main {
         XSSFWorkbook wb=new XSSFWorkbook(inp);
 
         Sheet sheet1=wb.getSheetAt(0);
-        Row r=sheet1.getRow(rowp-1); // cuz the rows and collumns are based off 0 scales
+        Row r=sheet1.getRow(rowp-1); // cuz the rows and columns are based off 0 scales
         if (r==null){
             // First cell in the row, create
             r=sheet1.createRow(rowp-1);
