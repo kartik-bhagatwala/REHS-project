@@ -498,6 +498,9 @@ public class Main {
 
         return txt;
     }
+    private static String getregexfromfile(String filename){//returns a regex of the words from a text file, stored in the working directory
+        
+    }
     private static Integer findkeyval(ArrayList datesplusranks){
         Integer key=0;
         for (Object datesplusrank : datesplusranks) {
@@ -507,10 +510,10 @@ public class Main {
         }
         return key;
     }
-    //TODO figure out how to classify words.
+
     private static String classify(String txt){
         String cat="";
-        if(txt.equals("eruption") || txt.equals("earthquake") || txt.equals("hurricane")||txt.equals("storm")||txt.equals("eruption")){
+        if(txt.equals("eruption") || txt.equals("earthquake") || txt.equals("hurricane")||txt.equals("storm")||txt.equals("eruption")||txt.equals("quake")){
             cat="event";
         }else if(txt.equalsIgnoreCase("survey") ||txt.equalsIgnoreCase("study") ||txt.equalsIgnoreCase("expedition")||txt.equalsIgnoreCase("research")||txt.equalsIgnoreCase("results")||txt.equalsIgnoreCase("summary")||txt.equalsIgnoreCase("investigations") ){
             cat="range";
