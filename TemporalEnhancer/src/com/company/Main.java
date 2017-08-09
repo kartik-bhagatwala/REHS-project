@@ -499,9 +499,9 @@ public class Main {
         return txt;
     }
     private static String getregexfromfile(String filename){//returns a regex of the words from a text file, stored in the working directory
-        String regex;
 
         String regex="placeholder";
+        Scanner input= null;
         try {
             input = new Scanner(new File(filename));
         } catch (FileNotFoundException e) {
