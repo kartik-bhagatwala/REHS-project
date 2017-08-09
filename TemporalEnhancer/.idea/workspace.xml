@@ -24,8 +24,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="501" column="8" lean-forward="true" selection-start-line="501" selection-start-column="8" selection-end-line="501" selection-end-column="8" />
+            <state relative-caret-position="366">
+              <caret line="505" column="5" lean-forward="true" selection-start-line="505" selection-start-column="5" selection-end-line="505" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2843#2852#0" expanded="true" />
@@ -602,8 +602,8 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/io/PrintStream.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="501" column="8" lean-forward="true" selection-start-line="501" selection-start-column="8" selection-end-line="501" selection-end-column="8" />
+        <state relative-caret-position="366">
+          <caret line="505" column="5" lean-forward="true" selection-start-line="505" selection-start-column="5" selection-end-line="505" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2843#2852#0" expanded="true" />

@@ -499,7 +499,10 @@ public class Main {
         return txt;
     }
     private static String getregexfromfile(String filename){//returns a regex of the words from a text file, stored in the working directory
-        
+        String regex;
+        for(words){
+            regex=regex+word;
+        }
     }
     private static Integer findkeyval(ArrayList datesplusranks){
         Integer key=0;
