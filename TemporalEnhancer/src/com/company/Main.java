@@ -500,9 +500,21 @@ public class Main {
     }
     private static String getregexfromfile(String filename){//returns a regex of the words from a text file, stored in the working directory
         String regex;
-        for(words){
-            regex=regex+word;
+
+        String regex="placeholder";
+        try {
+            input = new Scanner(new File(filename));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+        input.useDelimiter(" +"); //delimiter is one or more spaces
+
+        while(input.hasNext()){
+            String word=input.next();
+            System.out.println(word);
+            regex=regex+"|"+word;
+        }
+        return regex;
     }
     private static Integer findkeyval(ArrayList datesplusranks){
         Integer key=0;
