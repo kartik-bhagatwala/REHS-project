@@ -490,29 +490,26 @@ public class Main {
     }
     private static String replace(String txt){
         txt = txt.replaceAll("[ ]{3,}", " sp ");
+        txt=txt.replaceAll(getregexfromfile("stopwords.txt"),"");
 
-        txt=txt.replaceAll("current","");
-        txt=txt.replaceAll("previously","");
-        txt=txt.replaceAll("month","");
-        txt=txt.replaceAll("quarter","");
 
         return txt;
     }
-    private static String getregexfromfile(String filename){//returns a regex of the words from a text file, stored in the working directory
+    private static String getregexfromfile(String filename){//returns a regex of the words from a text file, which is stored in the working directory
 
-        String regex="placeholder";
+        String regex="adkjfalkfi"; //a placeholder word for the regex, should never match so this is better than just 'placeholder'
         Scanner input= null;
         try {
             input = new Scanner(new File(filename));
+            input.useDelimiter(" +"); //delimiter is one or more spaces
+
+            while(input.hasNext()){
+                String word=input.next();
+                System.out.println(word);
+                regex=regex+"|"+word;
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        input.useDelimiter(" +"); //delimiter is one or more spaces
-
-        while(input.hasNext()){
-            String word=input.next();
-            System.out.println(word);
-            regex=regex+"|"+word;
         }
         return regex;
     }
@@ -527,12 +524,10 @@ public class Main {
     }
 
     private static String classify(String txt){
-        String cat="";
-        if(txt.equals("eruption") || txt.equals("earthquake") || txt.equals("hurricane")||txt.equals("storm")||txt.equals("eruption")||txt.equals("quake")){
+        String cat;
+        if(txt.matches("/"+getregexfromfile("eventwords.txt")+"/i")){
             cat="event";
-        }else if(txt.equalsIgnoreCase("survey") ||txt.equalsIgnoreCase("study") ||txt.equalsIgnoreCase("expedition")||txt.equalsIgnoreCase("research")||txt.equalsIgnoreCase("results")||txt.equalsIgnoreCase("summary")||txt.equalsIgnoreCase("investigations") ){
-            cat="range";
-        }else if(txt.equalsIgnoreCase("surveys")||txt.equalsIgnoreCase("conclusion") ||txt.equalsIgnoreCase("report")){
+        }else if(txt.matches("/"+getregexfromfile("rangewords.txt")+"/i")){
             cat="range";
         } else {
             cat=null;
